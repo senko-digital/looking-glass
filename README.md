@@ -1,18 +1,16 @@
 [![docker image build](https://github.com/wikihost-opensource/als/actions/workflows/docker-image.yml/badge.svg)](https://github.com/wikihost-opensource/als/actions/workflows/docker-image.yml)
 
 
-Language: English | [简体中文](README_zh_CN.md)
+Language: English
 
 # ALS - Another Looking-glass Server
 
 ## Quick start
 ```
-docker run -d --name looking-glass --restart always --network host wikihostinc/looking-glass-server
+docker run -d --name looking-glass --restart always --network host senkodev/looking-glass
 ```
 
-[DEMO](http://lg.hk1-bgp.hkg.50network.com/)
-
-If you don't want to use Docker , you can use the [compiled server](https://github.com/wikihost-opensource/als/releases)
+If you don't want to use Docker, you can use the [compiled server](https://github.com/wikihost-opensource/als/releases)
 
 ## Host Requirements
  - RAM: 32MB or more
@@ -66,9 +64,3 @@ https://www.jetbrains.com/
 ## License
 
 Code is licensed under MIT Public License.
-
-* If you wish to support my efforts, keep the "Powered by WIKIHOST Opensource - ALS" link intact.
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=wikihost-opensource/als&type=Date)](https://star-history.com/#wikihost-opensource/als&Date)
