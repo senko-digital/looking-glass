@@ -24,7 +24,7 @@ const copy = async (value) => {
   }
   isClicked.value = true
   if (!props['hideMessage']) {
-    message.info('已复制到剪贴板')
+    message.info('Copied to clipboard')
   }
 }
 
@@ -46,8 +46,8 @@ const handleUpdateShow = (show) => {
         </slot>
       </div>
     </template>
-    <span v-if="!isClicked">点击复制</span>
-    <span v-if="isClicked">内容已复制 !</span>
+    <span v-if="!isClicked">Click to Copy</span>
+    <span v-if="isClicked">Content Copied!</span>
   </n-tooltip>
   <n-button v-else text @click="copy(props.value)">
     <slot></slot>
