@@ -1,0 +1,21 @@
+{
+    "server_info": "Інформація про сервер",
+    "server_location": "Локація сервера",
+    "server_speedtest": "Тест швидкості сервера",
+    "file_speedtest": "Тест завантаження файлів",
+    "file_ipv4_speedtest": "Тест завантаження по IPv4",
+    "file_ipv6_speedtest": "Тест завантаження по IPv6",
+    "librespeed_begin": "Почати тест",
+    "librespeed_stop": "Зупинити тест",
+    "librespeed_upload": "Завантаження",
+    "librespeed_download": "Завантаження",
+    "network_tools": "Мережеві інструменти",
+    "server_bandwidth_graph": "Графіки навантаження на мережу сервера",
+    "server_bandwidth_graph_receive": "Отримано",
+    "server_bandwidth_graph_sended": "Відправлено",
+    "ipv4_address": "IPv4-адреса",
+    "ipv6_address": "IPv6-адреса",
+    "my_address": "Ваша IP-адреса",
+    "sponsor_message": "Повідомлення спонсора",
+    "memory_usage": "Використано пам'яті"
+}
