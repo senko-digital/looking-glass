@@ -56,7 +56,7 @@ onMounted(async () => {
     <n-global-style />
     <n-message-provider>
       <n-space vertical>
-        <h2>Looking Glass Server</h2>
+        <h2>Senko Digital - Looking Glass</h2>
         <LoadingCard v-if="appStore.connecting" />
         <template v-else>
           <InfoCard />
@@ -67,15 +67,7 @@ onMounted(async () => {
         <n-space justify="space-between">
           <div>
             <div style="margin-top: 10px">
-              Powered by
-              <n-button
-                text
-                tag="a"
-                target="_blank"
-                href="https://github.com/wikihost-opensource/als"
-              >
-                WIKIHOST Opensource - ALS (Github)
-              </n-button>
+              © 2021 – 2025 Senko Digital Ltd
             </div>
             <div>
               <p>{{ $t('memory_usage') }}: {{ appStore.memoryUsage }}</p>
