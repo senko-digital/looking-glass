@@ -66,9 +66,3 @@ https://www.jetbrains.com/
 ## License
 
 Code is licensed under MIT Public License.
-
-* If you wish to support my efforts, keep the "Powered by WIKIHOST Opensource - ALS" link intact.
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=wikihost-opensource/als&type=Date)](https://star-history.com/#wikihost-opensource/als&Date)
