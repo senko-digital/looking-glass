@@ -37,4 +37,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64/v8
           push: true
-          tags: wikihostinc/looking-glass-server:latest
+          tags: senkodev/looking-glass:latest
