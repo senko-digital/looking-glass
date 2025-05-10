@@ -1,8 +1,9 @@
 {
-  "name": "als",
-  "version": "0.0.0",
+  "name": "looking-glass",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
+  "author": "Senko Digital Ltd",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
