@@ -135,7 +135,7 @@ onUnmounted(() => {
         :disabled="working"
         v-model:value="serverId"
         :style="{ width: '90%' }"
-        placeholder="speedtest.net 服务器 ID (可空)"
+        placeholder="speedtest.net server ID (optional)"
         @keyup.enter="speedtest"
       />
       <n-button :loading="working" type="primary" ghost @click="speedtest()"> Run </n-button>
@@ -154,7 +154,7 @@ onUnmounted(() => {
     </n-collapse-transition>
 
     <n-collapse-transition :show="!isQueue && isSpeedtest && action == '' && !isCrash">
-      <n-alert :show-icon="false" :bordered="false"> Test will start soon... </n-alert>
+      <n-alert :show-icon="false" :bordered="false">Test will start soon... </n-alert>
     </n-collapse-transition>
     <n-collapse-transition :show="speedtestData.result != ''">
       <n-alert :show-icon="false" :bordered="false">
