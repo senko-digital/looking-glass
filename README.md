@@ -1,4 +1,4 @@
-[![docker image build](https://github.com/wikihost-opensource/als/actions/workflows/docker-image.yml/badge.svg)](https://github.com/wikihost-opensource/als/actions/workflows/docker-image.yml)
+[![docker image build](https://github.com/senko-digital/looking-glass/actions/workflows/docker-image.yml/badge.svg)](https://github.com/senko-digital/looking-glass/actions/workflows/docker-image.yml)
 
 # Senko Digital - Looking Glass based on ALS
 
