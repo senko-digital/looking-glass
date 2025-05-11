@@ -4,13 +4,6 @@ import { createI18n } from 'vue-i18n'
 
 export const list = [
   {
-    label: '简体中文',
-    value: 'zh-CN',
-    autoChangeMap: ['zh-CN', 'zh'],
-    uiLang: () => zhCN,
-    dateLang: () => dateZhCN
-  },
-  {
     label: 'English',
     value: 'en-US',
     autoChangeMap: ['en-US', 'en'],
@@ -30,6 +23,13 @@ export const list = [
     autoChangeMap: ['uk-UA', 'uk'],
     uiLang: () => ukUA,
     dateLang: () => dateUkUA
+  },
+  {
+    label: '简体中文',
+    value: 'zh-CN',
+    autoChangeMap: ['zh-CN', 'zh'],
+    uiLang: () => zhCN,
+    dateLang: () => dateZhCN
   }
 ]
 
