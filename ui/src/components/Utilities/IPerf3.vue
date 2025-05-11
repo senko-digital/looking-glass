@@ -70,8 +70,8 @@ onUnmounted(() => {
       ghost
       @click="!working ? startServer() : stopServer()"
     >
-      <span v-if="!working"> 启动 iPerf3 服务器 </span>
-      <span v-else> 停止 iPerf3 服务器 </span>
+      <span v-if="!working"> Start iPerf3 Server </span>
+      <span v-else> Stop iPerf3 Server </span>
     </n-button>
     <n-progress
       v-show="timeout != 0"
@@ -80,7 +80,7 @@ onUnmounted(() => {
       :percentage="100 - timeoutPercentage"
       :show-indicator="false"
     />
-    <n-alert v-if="working && port" title="您可以使用以下命令来连接 IPerf3 服务器" type="info">
+    <n-alert v-if="working && port" title="You can use the following commands to connect to the IPerf3 server" type="info">
       <n-space vertical>
         <template v-if="appStore.config.public_ipv4">
           // IPv4
