@@ -1,16 +1,11 @@
 [![docker image build](https://github.com/wikihost-opensource/als/actions/workflows/docker-image.yml/badge.svg)](https://github.com/wikihost-opensource/als/actions/workflows/docker-image.yml)
 
-
-Language: English
-
-# ALS - Another Looking-glass Server
+# Senko Digital - Looking Glass based on ALS
 
 ## Quick start
 ```
 docker run -d --name looking-glass --restart always --network host senkodev/looking-glass
 ```
-
-If you don't want to use Docker, you can use the [compiled server](https://github.com/wikihost-opensource/als/releases)
 
 ## Host Requirements
  - RAM: 32MB or more
@@ -25,7 +20,7 @@ docker run -d \
     -e HTTP_PORT=8080 \
     --restart always \
     --network host \
-    wikihostinc/looking-glass-server
+    senkodev/looking-glass
 ``` 
 
 ## Environment variable table
