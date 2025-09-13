@@ -14,6 +14,7 @@ func LoadFromEnv() {
 		"LOCATION":        &Config.Location,
 		"PUBLIC_IPV4":     &Config.PublicIPv4,
 		"PUBLIC_IPV6":     &Config.PublicIPv6,
+		"DOMAIN":          &Config.Domain,
 		"SPONSOR_MESSAGE": &Config.SponsorMessage,
 	}
 
