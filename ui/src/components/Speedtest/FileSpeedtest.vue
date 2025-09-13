@@ -23,7 +23,7 @@ const url = ref(new URL(location.href))
           type="info"
           tag="a"
           target="blank"
-          :href="'./session/' + appStore.sessionId + '/speedtest/file/' + '/' + fileSize + '.test'"
+          :href="'./session/' + appStore.sessionId + '/speedtest/file/' + fileSize + '.test'"
           v-for="fileSize in appStore.config.speedtest_files"
           >{{ fileSize }}</n-button
         >
