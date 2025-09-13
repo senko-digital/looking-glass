@@ -9,7 +9,7 @@ const url = ref(new URL(location.href))
   <template
     v-if="
       (appStore.config.public_ipv4 == '' && appStore.config.public_ipv6 == '') ||
-      (appStore.config.filetest_follow_domain && appStore.config.filetest_follow_domain != '')
+      (appStore.config.filetest_follow_domain && appStore.config.filetest_follow_domain != '') ||
       (appStore.config.domain && appStore.config.domain != '')
     "
   >
@@ -72,9 +72,9 @@ const url = ref(new URL(location.href))
             target="blank"
             :href="
               url.protocol +
-              '//[' +
-              appStore.config.domain +
-              ']:' +
+              '//' +
+              (appStore.config.domain || '[' + appStore.config.public_ipv6 + ']') +
+              ':' +
               url.port +
               '/session/' +
               appStore.sessionId +
