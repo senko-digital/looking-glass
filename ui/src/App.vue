@@ -66,9 +66,7 @@ onMounted(async () => {
         </template>
         <n-space justify="space-between">
           <div>
-            <div style="margin-top: 10px">
-              © 2021 – 2025 Senko Digital Ltd
-            </div>
+            <div style="margin-top: 10px">© 2021 – 2025 Senko Digital Ltd</div>
             <div>
               <p>{{ $t('memory_usage') }}: {{ appStore.memoryUsage }}</p>
             </div>

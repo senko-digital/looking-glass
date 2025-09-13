@@ -2,6 +2,9 @@
 import { onMounted, onUnmounted } from 'vue'
 import { useAppStore } from '@/stores/app'
 import { formatBytes } from '@/helper/unit'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n({ useScope: 'global' })
 
 let abortController = markRaw(new AbortController())
 
@@ -60,25 +63,25 @@ const handleMessage = (e) => {
       speedtestData.value.serverInfo.pos = data.server.country + ' - ' + data.server.location
       break
     case 'ping':
-      action.value = 'Latency Test'
+      action.value = t('speedtest.latency_test')
       speedtestData.value.ping = data.ping.latency
       break
     case 'download':
-      action.value = 'Download Test'
-      speedtestData.value.download = formatBytes(data.download.bandwidth, 2, true)
+      action.value = t('speedtest.download_test')
+      speedtestData.value.download = formatBytes(data.download.bandwidth, 2, true, t)
       progress.value.sub = Math.round(data.download.progress * 100)
       progress.value.full = Math.round(progress.value.sub / 2)
       break
     case 'upload':
-      action.value = 'Upload Test'
-      speedtestData.value.upload = formatBytes(data.upload.bandwidth, 2, true)
+      action.value = t('speedtest.upload_test')
+      speedtestData.value.upload = formatBytes(data.upload.bandwidth, 2, true, t)
       progress.value.sub = Math.round(data.upload.progress * 100)
       progress.value.full = 50 + Math.round(progress.value.sub / 2)
       break
     case 'result':
       speedtestData.value.result = data.result.url
-      speedtestData.value.download = formatBytes(data.download.bandwidth, 2, true)
-      speedtestData.value.upload = formatBytes(data.upload.bandwidth, 2, true)
+      speedtestData.value.download = formatBytes(data.download.bandwidth, 2, true, t)
+      speedtestData.value.upload = formatBytes(data.upload.bandwidth, 2, true, t)
       break
   }
 }
@@ -135,10 +138,12 @@ onUnmounted(() => {
         :disabled="working"
         v-model:value="serverId"
         :style="{ width: '90%' }"
-        placeholder="speedtest.net server ID (optional)"
+        :placeholder="t('speedtest_net.server_id_placeholder')"
         @keyup.enter="speedtest"
       />
-      <n-button :loading="working" type="primary" ghost @click="speedtest()"> Run </n-button>
+      <n-button :loading="working" type="primary" ghost @click="speedtest()">{{
+        t('speedtest_net.run')
+      }}</n-button>
     </n-input-group>
     <n-collapse-transition :show="isQueue">
       <n-spin>
@@ -147,14 +152,15 @@ onUnmounted(() => {
           <br />
         </n-alert>
         <template #description>
-          Speed test request is in the queue, currently you are in the {{ queueStat.pos }} position
-          (total {{ queueStat.total }} positions)
+          {{ t('speedtest_net.queue_message', { pos: queueStat.pos, total: queueStat.total }) }}
         </template>
       </n-spin>
     </n-collapse-transition>
 
     <n-collapse-transition :show="!isQueue && isSpeedtest && action == '' && !isCrash">
-      <n-alert :show-icon="false" :bordered="false">Test will start soon... </n-alert>
+      <n-alert :show-icon="false" :bordered="false">{{
+        t('speedtest_net.test_will_start')
+      }}</n-alert>
     </n-collapse-transition>
     <n-collapse-transition :show="speedtestData.result != ''">
       <n-alert :show-icon="false" :bordered="false">
@@ -169,7 +175,7 @@ onUnmounted(() => {
     <n-collapse-transition :show="isSpeedtest && action != ''">
       <n-collapse-transition :show="working">
         <p>
-          {{ action }} - Progress
+          {{ action }} - {{ t('speedtest_net.progress') }}
           <span style="float: right">{{ progress.sub }}%</span>
         </p>
         <n-progress
@@ -193,15 +199,15 @@ onUnmounted(() => {
         <n-table :bordered="true" :single-line="false">
           <tbody>
             <tr>
-              <td>Server ID</td>
+              <td>{{ t('speedtest_net.server_id') }}</td>
               <td>{{ speedtestData.serverInfo.id }}</td>
             </tr>
             <tr>
-              <td>Server Location</td>
+              <td>{{ t('speedtest_net.server_location') }}</td>
               <td>{{ speedtestData.serverInfo.pos }}</td>
             </tr>
             <tr>
-              <td>Server Name</td>
+              <td>{{ t('speedtest_net.server_name') }}</td>
               <td>{{ speedtestData.serverInfo.name }}</td>
             </tr>
           </tbody>
@@ -213,18 +219,20 @@ onUnmounted(() => {
         <n-table :bordered="true" :single-line="false">
           <tbody>
             <tr>
-              <td>Latency</td>
-              <td v-if="speedtestData.ping == '0'">Waiting for start</td>
+              <td>{{ t('speedtest_net.latency') }}</td>
+              <td v-if="speedtestData.ping == '0'">{{ t('speedtest_net.waiting_for_start') }}</td>
               <td v-else>{{ speedtestData.ping }} ms</td>
             </tr>
             <tr>
-              <td>Download Speed</td>
-              <td v-if="speedtestData.download == ''">Waiting for start</td>
+              <td>{{ t('speedtest_net.download_speed') }}</td>
+              <td v-if="speedtestData.download == ''">
+                {{ t('speedtest_net.waiting_for_start') }}
+              </td>
               <td v-else>{{ speedtestData.download }}</td>
             </tr>
             <tr>
-              <td>Upload Speed</td>
-              <td v-if="speedtestData.upload == ''">Waiting for start</td>
+              <td>{{ t('speedtest_net.upload_speed') }}</td>
+              <td v-if="speedtestData.upload == ''">{{ t('speedtest_net.waiting_for_start') }}</td>
               <td v-else>{{ speedtestData.upload }}</td>
             </tr>
           </tbody>

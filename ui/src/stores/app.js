@@ -2,6 +2,7 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
 import { formatBytes } from '@/helper/unit'
+import { useI18n } from 'vue-i18n'
 export const useAppStore = defineStore('app', () => {
   const source = ref()
   const sessionId = ref()
@@ -10,6 +11,9 @@ export const useAppStore = defineStore('app', () => {
   const drawerWidth = ref()
   const memoryUsage = ref()
   let timer = ''
+
+  // Get translation function
+  const { t } = useI18n({ useScope: 'global' })
 
   const handleResize = () => {
     let width = window.innerWidth
@@ -43,7 +47,7 @@ export const useAppStore = defineStore('app', () => {
       connecting.value = false
     })
     eventSource.addEventListener('MemoryUsage', (e) => {
-      memoryUsage.value = formatBytes(e.data)
+      memoryUsage.value = formatBytes(e.data, 2, false, t)
     })
 
     eventSource.onerror = function (e) {
@@ -59,7 +63,7 @@ export const useAppStore = defineStore('app', () => {
 
   const requestMethod = (method, data = {}, signal = null) => {
     let axiosConfig = {
-      timeout: 1000 * 120, // 请求超时时间
+      timeout: 1000 * 120,
       headers: {
         session: sessionId.value
       }

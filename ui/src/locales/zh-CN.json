@@ -17,5 +17,77 @@
   "ipv4_address": "IPv4 地址",
   "ipv6_address": "IPv6 地址",
   "sponsor_message": "节点赞助商消息",
-  "memory_usage": "内存用量"
+  "memory_usage": "内存用量",
+  "speedtest": {
+    "latency_test": "延迟测试",
+    "download_test": "下载测试",
+    "upload_test": "上传测试"
+  },
+  "traffic": {
+    "receive": "接收",
+    "send": "发送"
+  },
+  "iperf3": {
+    "commands_title": "您可以使用以下命令连接到 IPerf3 服务器",
+    "ipv4_comment": "IPv4",
+    "ipv6_comment": "IPv6",
+    "start_server": "启动 iPerf3 服务器",
+    "stop_server": "停止 iPerf3 服务器"
+  },
+  "loading": "加载中...",
+  "tools": {
+    "ping": "Ping",
+    "iperf3": "IPerf3",
+    "speedtest_net": "Speedtest.net",
+    "shell": "Shell"
+  },
+  "copy": {
+    "click_to_copy": "点击复制",
+    "content_copied": "已复制！",
+    "copied_to_clipboard": "已复制到剪贴板"
+  },
+  "speedtest_net": {
+    "server_id_placeholder": "speedtest.net 服务器 ID（可选）",
+    "run": "运行",
+    "queue_message": "速度测试请求在队列中，您当前位于第 {pos} 位（共 {total} 位）",
+    "test_will_start": "测试即将开始...",
+    "view_results": "查看结果",
+    "progress": "进度",
+    "server_id": "服务器 ID",
+    "server_location": "服务器位置",
+    "server_name": "服务器名称",
+    "latency": "延迟",
+    "download_speed": "下载速度",
+    "upload_speed": "上传速度",
+    "waiting_for_start": "等待开始"
+  },
+  "ping": {
+    "stop": "停止",
+    "ping": "Ping",
+    "ip_placeholder": "IP 地址或域名",
+    "host": "主机",
+    "ttl": "TTL",
+    "latency": "延迟"
+  },
+  "units": {
+    "bytes": "字节",
+    "kb": "KB",
+    "mb": "MB",
+    "gb": "GB",
+    "tb": "TB",
+    "pb": "PB",
+    "eb": "EB",
+    "zb": "ZB",
+    "yb": "YB",
+    "bps": "Bps",
+    "kbps": "Kbps",
+    "mbps": "Mbps",
+    "gbps": "Gbps",
+    "tbps": "Tbps",
+    "pbps": "Pbps",
+    "ebps": "Ebps",
+    "zbps": "Zbps",
+    "ybps": "Ybps",
+    "mbps_unit": "Mbps"
+  }
 }

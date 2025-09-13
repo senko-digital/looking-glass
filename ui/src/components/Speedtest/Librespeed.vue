@@ -2,6 +2,9 @@
 import { useAppStore } from '@/stores/app'
 import { onMounted, toRaw } from 'vue'
 import VueApexCharts from 'vue3-apexcharts'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n({ useScope: 'global' })
 const appStore = useAppStore()
 
 let workerInstance = null
@@ -58,7 +61,7 @@ const baseChartOptions = {
 }
 const baseSeries = {
   type: 'area',
-  name: 'Receive',
+  name: t('traffic.receive'),
   data: []
 }
 const charts = ref({
@@ -129,7 +132,7 @@ const startOrStopSpeedtest = (force = false) => {
       })
       chartUploadRef.value.updateSeries([
         {
-          name: 'Receive',
+          name: t('traffic.receive'),
           data: toRaw(charts.value.upload.data)
         }
       ])
@@ -147,7 +150,7 @@ const startOrStopSpeedtest = (force = false) => {
       })
       chartDownloadRef.value.updateSeries([
         {
-          name: 'Receive',
+          name: t('traffic.receive'),
           data: toRaw(charts.value.download.data)
         }
       ])
@@ -174,7 +177,7 @@ const startOrStopSpeedtest = (force = false) => {
       <n-gi span="1">
         <div>
           <h4>{{ $t('librespeed_download') }}</h4>
-          <h1>{{ downloadText }} Mbps</h1>
+          <h1>{{ downloadText }} {{ t('units.mbps_unit') }}</h1>
         </div>
         <VueApexCharts
           type="area"
@@ -187,7 +190,7 @@ const startOrStopSpeedtest = (force = false) => {
       <n-gi span="1">
         <div>
           <h4>{{ $t('librespeed_upload') }}</h4>
-          <h1>{{ uploadText }} Mbps</h1>
+          <h1>{{ uploadText }} {{ t('units.mbps_unit') }}</h1>
         </div>
         <VueApexCharts
           type="area"

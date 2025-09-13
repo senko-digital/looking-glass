@@ -3,6 +3,9 @@ import { useAppStore } from '@/stores/app'
 const appStore = useAppStore()
 import { shallowRef, computed, defineAsyncComponent, onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n({ useScope: 'global' })
 const { config } = storeToRefs(appStore)
 const _v = (loader) => {
   return defineAsyncComponent({
@@ -13,25 +16,25 @@ const _v = (loader) => {
 
 const tools = ref([
   {
-    label: 'Ping',
+    label: t('tools.ping'),
     show: false,
     enable: false,
     componentNode: _v(() => import('./Utilities/Ping.vue'))
   },
   {
-    label: 'IPerf3',
+    label: t('tools.iperf3'),
     show: false,
     enable: false,
     componentNode: _v(() => import('./Utilities/IPerf3.vue'))
   },
   {
-    label: 'Speedtest.net',
+    label: t('tools.speedtest_net'),
     show: false,
     enable: false,
     componentNode: _v(() => import('./Utilities/SpeedtestNet.vue'))
   },
   {
-    label: 'Shell',
+    label: t('tools.shell'),
     show: false,
     enable: false,
     componentNode: _v(() => import('./Utilities/Shell.vue'))

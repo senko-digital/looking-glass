@@ -3,6 +3,9 @@ import { useAppStore } from '@/stores/app'
 import { onUnmounted, toRaw } from 'vue'
 import { formatBytes } from '@/helper/unit'
 import VueApexCharts from 'vue3-apexcharts'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n({ useScope: 'global' })
 
 const appStore = useAppStore()
 const interfaces = ref({})
@@ -87,7 +90,7 @@ const createGraph = (interfaceName) => {
       yaxis: {
         labels: {
           formatter: (value) => {
-            return formatBytes(value, 2, true)
+            return formatBytes(value, 2, true, t)
           }
         }
       },
@@ -109,12 +112,12 @@ const createGraph = (interfaceName) => {
     series: [
       {
         type: 'area',
-        name: 'Receive',
+        name: t('traffic.receive'),
         data: []
       },
       {
         type: 'area',
-        name: 'Send',
+        name: t('traffic.send'),
         data: []
       }
     ]
@@ -186,11 +189,11 @@ const updateSerieByInterface = (interfaceName, iface, date = null, pointname = n
 
   iface.ref.updateSeries([
     {
-      name: 'Receive',
+      name: t('traffic.receive'),
       data: toRaw(receiveDatas)
     },
     {
-      name: 'Send',
+      name: t('traffic.send'),
       data: toRaw(sendDatas)
     }
   ])
@@ -216,15 +219,15 @@ onUnmounted(() => {
             <n-gi>
               <h3>{{ $t('server_bandwidth_graph_receive') }}</h3>
               <span class="traffic-display">
-                {{ formatBytes(interfaceData.traffic.receive, 2, true) }} /
-                {{ formatBytes(interfaceData.receive) }}
+                {{ formatBytes(interfaceData.traffic.receive, 2, true, t) }} /
+                {{ formatBytes(interfaceData.receive, 2, false, t) }}
               </span>
             </n-gi>
             <n-gi>
               <h3>{{ $t('server_bandwidth_graph_sended') }}</h3>
               <span class="traffic-display">
-                {{ formatBytes(interfaceData.traffic.send, 2, true) }} /
-                {{ formatBytes(interfaceData.send) }}
+                {{ formatBytes(interfaceData.traffic.send, 2, true, t) }} /
+                {{ formatBytes(interfaceData.send, 2, false, t) }}
               </span>
             </n-gi>
             <n-gi span="2">

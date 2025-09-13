@@ -43,20 +43,20 @@ export default defineConfig(({ command }) => {
         name: 'build-script',
         buildStart(options) {
           if (command === 'build') {
-            const dirPath = path.join(__dirname, 'public');
+            const dirPath = path.join(__dirname, 'public')
             const fileBuildRequired = {
-              "speedtest_worker.js": "../speedtest/speedtest_worker.js"
-            };
+              'speedtest_worker.js': '../speedtest/speedtest_worker.js'
+            }
 
             for (var dest in fileBuildRequired) {
               const source = fileBuildRequired[dest]
-              if (fs.existsSync(dirPath + "/" + dest)) {
-                fs.unlinkSync(dirPath + "/" + dest)
+              if (fs.existsSync(dirPath + '/' + dest)) {
+                fs.unlinkSync(dirPath + '/' + dest)
               }
-              fs.copyFileSync(dirPath + "/" + source, dirPath + "/" + dest)
+              fs.copyFileSync(dirPath + '/' + source, dirPath + '/' + dest)
             }
           }
-        },
+        }
       },
       Components({
         resolvers: [NaiveUiResolver()]

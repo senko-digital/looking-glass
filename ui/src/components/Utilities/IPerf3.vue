@@ -5,6 +5,9 @@ import 'xterm/css/xterm.css'
 import { Terminal } from 'xterm'
 import { FitAddon } from '@xterm/addon-fit'
 import Copy from '../Copy.vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n({ useScope: 'global' })
 
 const appStore = useAppStore()
 const working = ref(false)
@@ -70,8 +73,8 @@ onUnmounted(() => {
       ghost
       @click="!working ? startServer() : stopServer()"
     >
-      <span v-if="!working"> Start iPerf3 Server </span>
-      <span v-else> Stop iPerf3 Server </span>
+      <span v-if="!working">{{ t('iperf3.start_server') }}</span>
+      <span v-else>{{ t('iperf3.stop_server') }}</span>
     </n-button>
     <n-progress
       v-show="timeout != 0"
@@ -80,16 +83,16 @@ onUnmounted(() => {
       :percentage="100 - timeoutPercentage"
       :show-indicator="false"
     />
-    <n-alert v-if="working && port" title="You can use the following commands to connect to the IPerf3 server" type="info">
+    <n-alert v-if="working && port" :title="t('iperf3.commands_title')" type="info">
       <n-space vertical>
         <template v-if="appStore.config.public_ipv4">
-          // IPv4
+          // {{ t('iperf3.ipv4_comment') }}
           <Copy :value="'iperf3 -c ' + appStore.config.public_ipv4 + ' -p ' + port"
             >iperf3 -c {{ appStore.config.public_ipv4 }} -p {{ port }}</Copy
           >
         </template>
         <template v-if="appStore.config.public_ipv6">
-          // IPv6
+          // {{ t('iperf3.ipv6_comment') }}
           <Copy :value="'iperf3 -c ' + appStore.config.public_ipv6 + ' -p ' + port"
             >iperf3 -c {{ appStore.config.public_ipv6 }} -p {{ port }}</Copy
           >

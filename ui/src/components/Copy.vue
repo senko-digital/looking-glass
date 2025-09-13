@@ -3,6 +3,9 @@ import { Copy as IconCopy } from '@vicons/carbon'
 
 import { Clipboard } from 'v-clipboard'
 import { useMessage } from 'naive-ui'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n({ useScope: 'global' })
 
 const props = defineProps({
   value: String,
@@ -24,7 +27,7 @@ const copy = async (value) => {
   }
   isClicked.value = true
   if (!props['hideMessage']) {
-    message.info('Copied to clipboard')
+    message.info(t('copy.copied_to_clipboard'))
   }
 }
 
@@ -46,8 +49,8 @@ const handleUpdateShow = (show) => {
         </slot>
       </div>
     </template>
-    <span v-if="!isClicked">Click to Copy</span>
-    <span v-if="isClicked">Content Copied!</span>
+    <span v-if="!isClicked">{{ t('copy.click_to_copy') }}</span>
+    <span v-if="isClicked">{{ t('copy.content_copied') }}</span>
   </n-tooltip>
   <n-button v-else text @click="copy(props.value)">
     <slot></slot>
