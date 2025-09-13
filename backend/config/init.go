@@ -19,6 +19,7 @@ type ALSConfig struct {
 
 	PublicIPv4 string `json:"public_ipv4"`
 	PublicIPv6 string `json:"public_ipv6"`
+	Domain     string `json:"domain"`
 
 	Iperf3StartPort int `json:"-"`
 	Iperf3EndPort   int `json:"-"`
@@ -49,6 +50,7 @@ func GetDefaultConfig() *ALSConfig {
 		SpeedtestFileList: []string{"1MB", "10MB", "100MB", "1GB", "100GB"},
 		PublicIPv4:        "",
 		PublicIPv6:        "",
+		Domain:            "",
 
 		FeaturePing:            true,
 		FeatureShell:           true,

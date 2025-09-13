@@ -45,7 +45,7 @@ const url = ref(new URL(location.href))
             :href="
               url.protocol +
               '//' +
-              appStore.config.domain +
+              (appStore.config.domain || appStore.config.public_ipv4) +
               ':' +
               url.port +
               '/session/' +
